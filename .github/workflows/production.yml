@@ -1,0 +1,82 @@
+name: Validate and deploy production
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Test deployment artifact handling
+        run: python3 -m unittest discover -s deploy/tests -v
+      - name: Generate and validate the static site
+        run: python3 deploy/package.py "$GITHUB_SHA"
+
+  deploy:
+    needs: validate
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    concurrency:
+      group: eji-production
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Build the validated revision
+        run: python3 deploy/package.py "$GITHUB_SHA"
+      - name: Load private production configuration
+        id: config
+        env:
+          PRODUCTION_CONFIG: ${{ secrets.EJI_PRODUCTION_CONFIG }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          from pathlib import Path
+          value = os.environ.get('PRODUCTION_CONFIG', '')
+          if not value:
+              raise SystemExit('Set the EJI_PRODUCTION_CONFIG repository secret before deploying.')
+          config = json.loads(value)
+          required = ('account', 'region', 'instance', 'host_role', 'bucket', 'role', 'document', 'oidc_subject', 'url')
+          if not all(isinstance(config.get(key), str) and config[key] for key in required):
+              raise SystemExit('Production configuration has missing or invalid fields.')
+          if not re.fullmatch(r'[0-9]{12}', config['account']):
+              raise SystemExit('Invalid production account ID.')
+          role_arn = 'arn:aws:iam::' + config['account'] + ':role/' + config['role']
+          for item in (*config.values(), role_arn):
+              print('::add-mask::' + str(item))
+          path = Path('deploy/config.json')
+          path.write_text(json.dumps(config))
+          path.chmod(0o600)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              for key, item in {'role_arn': role_arn, 'account': config['account'], 'region': config['region']}.items():
+                  output.write(key + '=' + item + '\n')
+          PY
+      - name: Obtain short-lived production credentials
+        uses: aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708 # v5.1.1
+        with:
+          aws-region: ${{ steps.config.outputs.region }}
+          role-to-assume: ${{ steps.config.outputs.role_arn }}
+          role-session-name: eji-${{ github.run_id }}
+          allowed-account-ids: ${{ steps.config.outputs.account }}
+          mask-aws-account-id: true
+          role-duration-seconds: 900
+      - name: Deploy and verify public HTTPS
+        run: python3 deploy/client.py
+      - name: Remove private configuration
+        if: always()
+        run: rm -f deploy/config.json

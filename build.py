@@ -13,7 +13,7 @@ PHONE = "021 3007 7878"
 
 L = {
  "en": dict(
-  lang="en", banner="DRAFT. Items highlighted in yellow must be confirmed before launch.",
+  lang="en",
   tagline="ALVA charging network operator",
   nav=[("index.html#services","Services"),("index.html#how-it-works","How It Works"),("index.html#contact","Contact")],
   title="PT Electra Jaringan Indonesia | Electric Motorcycle Charging",
@@ -25,7 +25,7 @@ L = {
   footer_services="Services", footer_policies="Policies", rights="All rights reserved.", home="Home",
  ),
  "id": dict(
-  lang="id", banner="DRAFT. Teks bertanda kuning wajib dikonfirmasi sebelum tayang.",
+  lang="id",
   tagline="Operator jaringan pengisian daya ALVA",
   nav=[("index.html#layanan","Layanan"),("index.html#cara-pakai","Cara Pakai"),("index.html#kontak","Kontak")],
   title="PT Electra Jaringan Indonesia | Pengisian Daya Motor Listrik",

@@ -1,7 +1,4 @@
 /* Token dari ALVA Design System v2 (dgtl-alv/alva-design-system, DESIGN.md) */
-@font-face { font-family: "MADE Outer Sans"; src: url("fonts/made_outer_sans_light.otf") format("opentype"); font-weight: 300; font-display: swap; }
-@font-face { font-family: "MADE Outer Sans"; src: url("fonts/made_outer_sans_regular.otf") format("opentype"); font-weight: 400 500; font-display: swap; }
-@font-face { font-family: "MADE Outer Sans"; src: url("fonts/made_outer_sans_bold.otf") format("opentype"); font-weight: 600 800; font-display: swap; }
 
 :root {
   --text-primary: #1F2120;
@@ -28,8 +25,8 @@
   --radius-xl: 16px;
   --radius-full: 999px;
   --shadow-100: 0 1px 3px rgb(31 33 32 / 8%), 0 1px 2px rgb(31 33 32 / 6%);
-  --font-ui: "MADE Outer Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-read: "MADE Outer Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-ui: Arial, Helvetica, sans-serif;
+  --font-read: Arial, Helvetica, sans-serif;
   --wrap: 1120px;
 }
 
@@ -44,7 +41,6 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--border-focus); 
 
 /* Draft marker: isian yang wajib dikonfirmasi sebelum tayang */
 .todo { background: var(--bg-warning); color: var(--ink-warning); border-radius: var(--radius-sm); padding: 0 4px; font-weight: 500; }
-.draft-banner { background: var(--bg-warning); color: var(--ink-warning); font-size: 14px; line-height: 20px; text-align: center; padding: 8px 16px; font-weight: 500; }
 
 /* Header: mengikuti header alvaauto.com (bar #E0E0E0 80px, menu 14px light, tombol More putih, kartu statistik) */
 .site-header { position: sticky; top: 0; z-index: 20; }
