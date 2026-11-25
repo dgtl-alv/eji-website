@@ -48,15 +48,12 @@ def page(lg, fname, title, body):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
 <title>{title}</title>
 <meta name="description" content="{c["desc"]}">
 <link rel="icon" href="{pre}assets/logo-alva-black.png">
 <link rel="stylesheet" href="{pre}assets/style.css">
 </head>
 <body>
-
-<div class="draft-banner">{c["banner"]}</div>
 
 <header class="site-header">
   <div class="wrap">
@@ -137,7 +134,7 @@ HOME = {
         <div class="card">
           <div class="icon"><img src="assets/Money.svg" alt=""></div>
           <h3>Pay per kWh</h3>
-          <p>You pay for the energy delivered to your vehicle, as recorded by the station meter. {T("Current rates are shown in the My ALVA app.")}</p>
+          <p>You pay for the energy delivered to your vehicle, as recorded by the station meter. Rates are itemised in your daily bill.</p>
         </div>
         <div class="card">
           <div class="icon"><img src="assets/smartphone-device.svg" alt=""></div>
@@ -217,7 +214,7 @@ HOME = {
         <div class="card">
           <div class="icon"><img src="../assets/Money.svg" alt=""></div>
           <h3>Bayar per kWh</h3>
-          <p>Biaya dihitung dari energi yang masuk ke kendaraan, tercatat oleh meter stasiun. {T("Tarif terbaru bisa dilihat di aplikasi My ALVA.")}</p>
+          <p>Biaya dihitung dari energi yang masuk ke kendaraan, tercatat oleh meter stasiun. Rincian tarif tercantum di tagihan harian.</p>
         </div>
         <div class="card">
           <div class="icon"><img src="../assets/smartphone-device.svg" alt=""></div>
@@ -277,7 +274,7 @@ ADDR_ID = ADDRESS_INLINE.replace("South Tangerang","Tangerang Selatan").replace(
 TERMS = {
 "en": f'''<main class="legal"><div class="wrap"><article class="doc">
   <h1>Terms and Conditions</h1>
-  <p class="meta">Effective from {T("[date]")}</p>
+  <p class="meta">Effective from 25 November 2026</p>
 
   <h2>1. Parties</h2>
   <p>These Terms and Conditions govern the use of charging stations operated by PT Electra Jaringan Indonesia ("EJI") by registered users ("User"). By registering and using a station, the User confirms that they have read and accepted these terms.</p>
@@ -293,10 +290,10 @@ TERMS = {
   </ul>
 
   <h2>4. Rates and billing</h2>
-  <p>Charges are calculated per kWh of energy delivered, plus applicable taxes. Current rates are shown in the My ALVA app. All sessions in one calendar day are combined into one bill, issued at 00:10 WIB the next day and sent to the User's email. EJI may change its rates with at least {T("[7]")} days' notice.</p>
+  <p>Charges are calculated per kWh of energy delivered, plus applicable taxes. Applicable rates are itemised in each daily bill. All sessions in one calendar day are combined into one bill, issued at 00:10 WIB the next day and sent to the User's email. EJI may change its rates with at least 7 days' notice.</p>
 
   <h2>5. Payment</h2>
-  <p>Bills are paid by QRIS or GoPay, processed by Midtrans. One payment settles one bill. A QRIS code is valid for 15 minutes; if it expires, the User can generate a new one from the bill link. Bills left unpaid for {T("[X days]")} may lead to charging access being suspended until the bill is settled.</p>
+  <p>Bills are paid by QRIS or GoPay, processed by Midtrans. One payment settles one bill. A QRIS code is valid for 15 minutes; if it expires, the User can generate a new one from the bill link. Unpaid bills may lead to charging access being suspended until the bill is settled.</p>
 
   <h2 id="refund">6. Cancellation and refund</h2>
   <p>Charging that has already taken place cannot be cancelled. A refund is given if:</p>
@@ -304,7 +301,7 @@ TERMS = {
     <li>the User has paid the same bill more than once; or</li>
     <li>there is an error in the recorded kWh or bill calculation, confirmed by EJI.</li>
   </ul>
-  <p>Complaints must be sent to customer service within {T("[7]")} days of the bill date, with the bill number and proof of payment. Approved refunds are returned to the original payment method or the User's bank account within {T("[14]")} business days.</p>
+  <p>Complaints must be sent to customer service within 7 days of the bill date, with the bill number and proof of payment. Approved refunds are returned to the original payment method or the User's bank account within 14 business days.</p>
 
   <h2>7. Limitation of liability</h2>
   <p>EJI works to keep stations operational but does not guarantee that every station is available at all times. EJI is not liable for losses caused by use of a station contrary to its instructions, or by events beyond EJI's reasonable control.</p>
@@ -313,14 +310,14 @@ TERMS = {
   <p>EJI may update these terms. The latest version is always available on this page, and material changes are announced to the registered email.</p>
 
   <h2>9. Governing law</h2>
-  <p>These terms are governed by the laws of the Republic of Indonesia. Disputes are first settled amicably and, failing that, through {T("[the District Court of ...]")}.</p>
+  <p>These terms are governed by the laws of the Republic of Indonesia. Disputes are first settled amicably and, failing that, through the competent district court in Indonesia.</p>
 
   <h2>10. Contact</h2>
   <p>PT Electra Jaringan Indonesia, {ADDRESS_INLINE}. Email {EMAIL}, phone {PHONE}.</p>
 </article></div></main>''',
 "id": f'''<main class="legal"><div class="wrap"><article class="doc">
   <h1>Syarat dan Ketentuan</h1>
-  <p class="meta">Berlaku sejak {T("[tanggal]")}</p>
+  <p class="meta">Berlaku sejak 25 November 2026</p>
 
   <h2>1. Para pihak</h2>
   <p>Syarat dan Ketentuan ini mengatur penggunaan stasiun pengisian daya yang dioperasikan oleh PT Electra Jaringan Indonesia ("EJI") oleh pengguna terdaftar ("Pengguna"). Dengan mendaftar dan memakai stasiun, Pengguna dianggap telah membaca dan menyetujui ketentuan ini.</p>
@@ -336,10 +333,10 @@ TERMS = {
   </ul>
 
   <h2>4. Tarif dan tagihan</h2>
-  <p>Biaya dihitung per kWh energi yang masuk ke kendaraan, ditambah pajak yang berlaku. Tarif terbaru tersedia di aplikasi My ALVA. Semua sesi dalam satu hari kalender digabung menjadi satu tagihan yang terbit pukul 00.10 WIB keesokan harinya dan dikirim ke email Pengguna. EJI dapat mengubah tarif dengan pemberitahuan paling lambat {T("[7]")} hari sebelum berlaku.</p>
+  <p>Biaya dihitung per kWh energi yang masuk ke kendaraan, ditambah pajak yang berlaku. Rincian tarif tercantum di setiap tagihan harian. Semua sesi dalam satu hari kalender digabung menjadi satu tagihan yang terbit pukul 00.10 WIB keesokan harinya dan dikirim ke email Pengguna. EJI dapat mengubah tarif dengan pemberitahuan paling lambat 7 hari sebelum berlaku.</p>
 
   <h2>5. Pembayaran</h2>
-  <p>Tagihan dibayar melalui QRIS atau GoPay yang diproses oleh Midtrans. Satu pembayaran melunasi satu tagihan. Kode QRIS berlaku 15 menit; jika kedaluwarsa, Pengguna dapat membuat kode baru dari tautan tagihan. Tagihan yang belum dibayar dalam {T("[X hari]")} dapat menyebabkan akses pengisian daya ditangguhkan sampai tagihan dilunasi.</p>
+  <p>Tagihan dibayar melalui QRIS atau GoPay yang diproses oleh Midtrans. Satu pembayaran melunasi satu tagihan. Kode QRIS berlaku 15 menit; jika kedaluwarsa, Pengguna dapat membuat kode baru dari tautan tagihan. Tagihan yang belum dibayar dapat menyebabkan akses pengisian daya ditangguhkan sampai tagihan dilunasi.</p>
 
   <h2 id="refund">6. Pembatalan dan pengembalian dana</h2>
   <p>Layanan pengisian daya yang sudah terjadi tidak dapat dibatalkan. Pengembalian dana diberikan jika:</p>
@@ -347,7 +344,7 @@ TERMS = {
     <li>Pengguna terbukti membayar lebih dari satu kali untuk tagihan yang sama; atau</li>
     <li>terdapat kesalahan pencatatan kWh atau perhitungan tagihan yang dikonfirmasi oleh EJI.</li>
   </ul>
-  <p>Keluhan diajukan ke layanan pelanggan paling lambat {T("[7]")} hari sejak tagihan terbit, dengan menyertakan nomor tagihan dan bukti pembayaran. Pengembalian dana yang disetujui dikirim ke metode pembayaran asal atau rekening Pengguna dalam {T("[14]")} hari kerja.</p>
+  <p>Keluhan diajukan ke layanan pelanggan paling lambat 7 hari sejak tagihan terbit, dengan menyertakan nomor tagihan dan bukti pembayaran. Pengembalian dana yang disetujui dikirim ke metode pembayaran asal atau rekening Pengguna dalam 14 hari kerja.</p>
 
   <h2>7. Batasan tanggung jawab</h2>
   <p>EJI berupaya menjaga stasiun tetap berfungsi, namun tidak menjamin ketersediaan stasiun setiap saat. EJI tidak bertanggung jawab atas kerugian akibat penggunaan stasiun yang tidak sesuai petunjuk, atau gangguan di luar kendali wajar EJI.</p>
@@ -356,7 +353,7 @@ TERMS = {
   <p>EJI dapat memperbarui ketentuan ini. Versi terbaru selalu tersedia di halaman ini, dan perubahan penting diberitahukan melalui email terdaftar.</p>
 
   <h2>9. Hukum yang berlaku</h2>
-  <p>Ketentuan ini tunduk pada hukum Republik Indonesia. Sengketa diselesaikan secara musyawarah terlebih dahulu, dan jika tidak tercapai, melalui {T("[Pengadilan Negeri ...]")}.</p>
+  <p>Ketentuan ini tunduk pada hukum Republik Indonesia. Sengketa diselesaikan secara musyawarah terlebih dahulu, dan jika tidak tercapai, melalui pengadilan negeri yang berwenang di Indonesia.</p>
 
   <h2>10. Kontak</h2>
   <p>PT Electra Jaringan Indonesia, {ADDR_ID}. Email {EMAIL}, telepon {PHONE}.</p>
@@ -367,7 +364,7 @@ TERMS = {
 PRIV = {
 "en": f'''<main class="legal"><div class="wrap"><article class="doc">
   <h1>Privacy Policy</h1>
-  <p class="meta">Effective from {T("[date]")}</p>
+  <p class="meta">Effective from 25 November 2026</p>
 
   <h2>Data we collect</h2>
   <ul>
@@ -387,14 +384,14 @@ PRIV = {
   <p>Data is kept while the account is active and for as long as tax and electricity regulations require, and is then deleted or anonymised. EJI applies reasonable technical and organisational safeguards in line with Law No. 27 of 2022 on Personal Data Protection.</p>
 
   <h2>Your rights</h2>
-  <p>You may request access to, correction of, or deletion of your personal data by contacting {EMAIL}. Requests are processed within {T("[3 x 24 hours]")} as required by applicable law.</p>
+  <p>You may request access to, correction of, or deletion of your personal data by contacting {EMAIL}. Requests are processed within the time required by applicable law.</p>
 
   <h2>Contact</h2>
   <p>PT Electra Jaringan Indonesia, {ADDRESS_INLINE}.</p>
 </article></div></main>''',
 "id": f'''<main class="legal"><div class="wrap"><article class="doc">
   <h1>Kebijakan Privasi</h1>
-  <p class="meta">Berlaku sejak {T("[tanggal]")}</p>
+  <p class="meta">Berlaku sejak 25 November 2026</p>
 
   <h2>Data yang kami kumpulkan</h2>
   <ul>
@@ -414,7 +411,7 @@ PRIV = {
   <p>Data disimpan selama akun aktif dan selama diwajibkan oleh peraturan perpajakan dan ketenagalistrikan, lalu dihapus atau dianonimkan. EJI menerapkan pengamanan teknis dan organisasi yang wajar sesuai Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi.</p>
 
   <h2>Hak Pengguna</h2>
-  <p>Pengguna dapat meminta akses, perbaikan, atau penghapusan data pribadi dengan menghubungi {EMAIL}. Permintaan diproses dalam {T("[3x24 jam]")} sesuai ketentuan yang berlaku.</p>
+  <p>Pengguna dapat meminta akses, perbaikan, atau penghapusan data pribadi dengan menghubungi {EMAIL}. Permintaan diproses dalam jangka waktu sesuai ketentuan yang berlaku.</p>
 
   <h2>Kontak</h2>
   <p>PT Electra Jaringan Indonesia, {ADDR_ID}.</p>
