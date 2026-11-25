@@ -46,22 +46,41 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--border-focus); 
 .todo { background: var(--bg-warning); color: var(--ink-warning); border-radius: var(--radius-sm); padding: 0 4px; font-weight: 500; }
 .draft-banner { background: var(--bg-warning); color: var(--ink-warning); font-size: 14px; line-height: 20px; text-align: center; padding: 8px 16px; font-weight: 500; }
 
-/* Header */
-.site-header { position: sticky; top: 0; z-index: 10; background: var(--bg-dark); color: var(--text-inverse); }
-.site-header .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 16px; }
-.brand { display: flex; align-items: center; gap: 10px; color: var(--text-inverse); text-decoration: none; font-weight: 700; font-size: 16px; letter-spacing: 0.5px; }
+/* Header: mengikuti header alvaauto.com (bar #E0E0E0 80px, menu 14px light, tombol More putih, kartu statistik) */
+.site-header { position: sticky; top: 0; z-index: 20; }
+.topline { height: 3px; background: var(--bg-brand); }
+.bar { background: #E0E0E0; height: 80px; display: flex; align-items: center; gap: 24px; padding: 0 24px 0 88px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 18px; letter-spacing: 0.5px; white-space: nowrap; }
 .brand img { width: 32px; height: 32px; }
-.brand small { display: block; font-weight: 300; font-size: 12px; line-height: 14px; color: #B6B7B7; letter-spacing: 0; }
-.nav { display: none; gap: 24px; }
-.nav a { color: var(--text-inverse); text-decoration: none; font-size: 14px; font-weight: 500; }
-.nav a:hover { color: var(--bg-brand); }
-.header-right { display: flex; align-items: center; gap: 24px; }
-.lang { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; }
-.lang a { color: #9E9F9F; text-decoration: none; padding: 4px 2px; }
-.lang a[aria-current="true"] { color: var(--text-inverse); font-weight: 700; }
-.lang a:hover { color: var(--bg-brand); }
-.lang span { color: #4A4B4B; }
-@media (min-width: 900px) { .nav { display: flex; } }
+.nav { display: none; flex: 1; justify-content: flex-start; gap: 4px; padding-left: 32px; }
+.nav a { color: #292929; text-decoration: none; font-size: 14px; font-weight: 300; padding: 0 12px; line-height: 27px; }
+.nav a:hover { color: var(--text-brand-secondary); }
+.header-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+details { position: relative; }
+summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+summary::-webkit-details-marker { display: none; }
+.lang summary { height: 40px; padding: 4px 8px; font-size: 16px; font-weight: 300; color: rgb(0 0 0 / 87%); }
+.lang summary svg, .more summary svg { flex: none; }
+.lang[open] .chev { transform: rotate(180deg); }
+.more summary { height: 40px; padding: 0 16px 0 20px; background: #FFFFFF; font-size: 16px; font-weight: 300; color: rgb(0 0 0 / 87%); gap: 16px; box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%); }
+.menu { position: absolute; right: 0; top: calc(100% + 8px); min-width: 220px; background: #FFFFFF; box-shadow: 0 4px 16px rgb(0 0 0 / 12%); padding: 8px 0; display: grid; z-index: 30; }
+.menu a { color: var(--text-primary); text-decoration: none; font-size: 14px; font-weight: 300; padding: 10px 20px; }
+.menu a:hover, .menu a[aria-current="true"] { background: var(--bg-secondary); font-weight: 500; }
+.menu hr { border: 0; border-top: 1px solid var(--bg-tertiary); margin: 6px 0; }
+.menu .nav-only { display: block; }
+.stat-row { height: 42px; display: flex; justify-content: center; pointer-events: none; }
+.stat { pointer-events: auto; width: min(80%, 1048px); background: #FFFFFF; border-radius: 0 0 32px 32px; box-shadow: 0 4px 16px rgb(0 0 0 / 8%); display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 300; color: var(--text-primary); padding: 0 16px; text-align: center; }
+.stat b { font-weight: 700; }
+.stat svg { flex: none; }
+@media (min-width: 1100px) { .nav { display: flex; } .menu .nav-only { display: none; } }
+@media (max-width: 767.98px) {
+  .bar { height: 64px; padding: 0 16px; gap: 12px; }
+  .brand { font-size: 14px; letter-spacing: 0; white-space: normal; line-height: 16px; max-width: 150px; }
+  .brand img { width: 28px; height: 28px; }
+  .lang summary span.label { display: none; }
+  .more summary { padding: 0 12px; gap: 10px; font-size: 14px; }
+  .stat { width: calc(100% - 32px); font-size: 12px; line-height: 14px; }
+}
 
 /* Buttons (pill, per Button page) */
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 24px; border-radius: var(--radius-full); font-family: var(--font-ui); font-size: 14px; font-weight: 700; line-height: 16px; text-decoration: none; border: 1px solid transparent; }
@@ -71,7 +90,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--border-focus); 
 .btn-ghost { background: transparent; color: var(--text-inverse); border-color: var(--text-inverse); }
 
 /* Hero */
-.hero { background: var(--bg-dark); color: var(--text-inverse); padding: 64px 0 80px; }
+.hero { background: var(--bg-dark); color: var(--text-inverse); padding: 106px 0 80px; margin-top: -42px; }
 .eyebrow { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--bg-brand); margin-bottom: 16px; }
 .hero h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.25; font-weight: 700; letter-spacing: 0.5px; margin: 0 0 16px; max-width: 760px; }
 .hero p { font-size: 16px; line-height: 24px; font-weight: 300; color: #DBDBDB; max-width: 620px; margin: 0 0 32px; }
@@ -126,7 +145,7 @@ td.price { font-weight: 700; white-space: nowrap; }
 .copyright { border-top: 1px solid #4A4B4B; margin-top: 32px; padding-top: 16px; font-size: 12px; color: #9E9F9F; }
 
 /* Legal pages: Readex Pro untuk teks panjang (aturan DS) */
-.legal { padding: 48px 0 64px; }
+.legal { padding: 24px 0 64px; }
 .legal .doc { max-width: 760px; font-family: var(--font-read); }
 .legal h1 { font-family: var(--font-ui); font-size: clamp(28px, 5vw, 40px); line-height: 1.25; margin: 0 0 8px; }
 .legal h2 { font-family: var(--font-ui); font-size: 20px; margin: 32px 0 8px; }

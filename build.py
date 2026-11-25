@@ -19,6 +19,7 @@ L = {
   tnc="Terms and Conditions", refund="Cancellation and Refund", privacy="Privacy Policy",
   tnc_file="terms.html", privacy_file="privacy.html",
   footer_about="ALVA charging stations are operated by PT Electra Jaringan Indonesia, holder of an Electricity Supply Business License (IUPTL).",
+  more="More", stat_label="Charging station", stat_month="November 2026", stat_value="1,037 connectors",
   footer_services="Services", footer_policies="Policies", rights="All rights reserved.", home="Home",
  ),
  "id": dict(
@@ -30,6 +31,7 @@ L = {
   tnc="Syarat dan Ketentuan", refund="Pembatalan dan Pengembalian Dana", privacy="Kebijakan Privasi",
   tnc_file="syarat-ketentuan.html", privacy_file="kebijakan-privasi.html",
   footer_about="Stasiun pengisian daya ALVA dioperasikan oleh PT Electra Jaringan Indonesia, pemegang Izin Usaha Penyediaan Tenaga Listrik (IUPTL).",
+  more="Lainnya", stat_label="Stasiun pengisian", stat_month="November 2026", stat_value="1.037 konektor",
   footer_services="Layanan", footer_policies="Kebijakan", rights="Hak cipta dilindungi.", home="Beranda",
  ),
 }
@@ -43,6 +45,7 @@ def page(lg, fname, title, body):
     en_href = (pre + (fname if lg == "en" else PAIR[fname]))
     id_href = ("id/" + PAIR[fname]) if lg == "en" else fname
     nav = "\n".join(f'      <a href="{h}">{t}</a>' for h, t in c["nav"])
+    more_nav = "\n".join(f'          <a class="nav-only" href="{h}">{t}</a>' for h, t in c["nav"]) + '\n          <hr class="nav-only">'
     return f'''<!doctype html>
 <html lang="{lg}">
 <head>
@@ -56,20 +59,32 @@ def page(lg, fname, title, body):
 <body>
 
 <header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="index.html">
-      <img src="{pre}assets/logo-alva-white.png" alt="">
-      <span>Electra Jaringan Indonesia<small>{c["tagline"]}</small></span>
-    </a>
-    <div class="header-right">
-      <nav class="nav" aria-label="Main">
+  <div class="topline"></div>
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="{pre}assets/logo-alva-black.png" alt=""><span>Electra Jaringan Indonesia</span></a>
+    <nav class="nav" aria-label="Main">
 {nav}
-      </nav>
-      <div class="lang" aria-label="Language">
-        <a href="{en_href}" hreflang="en" aria-current="{str(lg=="en").lower()}">EN</a><span>|</span><a href="{id_href}" hreflang="id" aria-current="{str(lg=="id").lower()}">ID</a>
-      </div>
+    </nav>
+    <div class="header-right">
+      <details class="lang">
+        <summary aria-label="Language"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><span class="label">{lg.upper()}</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="menu">
+          <a href="{en_href}" hreflang="en" aria-current="{str(lg=="en").lower()}">English</a>
+          <a href="{id_href}" hreflang="id" aria-current="{str(lg=="id").lower()}">Bahasa Indonesia</a>
+        </div>
+      </details>
+      <details class="more">
+        <summary>{c["more"]}<svg width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M0 1h22M0 8h22M0 15h22"/></svg></summary>
+        <div class="menu">
+{more_nav}
+          <a href="{c["tnc_file"]}">{c["tnc"]}</a>
+          <a href="{c["tnc_file"]}#refund">{c["refund"]}</a>
+          <a href="{c["privacy_file"]}">{c["privacy"]}</a>
+        </div>
+      </details>
     </div>
   </div>
+  <div class="stat-row"><div class="stat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M13 6.5l-4 6h3.5l-1 5 4-6H12l1-5z" fill="currentColor" stroke="none"/></svg><span><b>{c["stat_label"]} :</b> {c["stat_month"]} <b>{c["stat_value"]}</b></span></div></div>
 </header>
 
 {body}
