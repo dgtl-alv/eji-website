@@ -1,0 +1,4 @@
+__pycache__/
+dist/
+.graphify/
+deploy/config.json

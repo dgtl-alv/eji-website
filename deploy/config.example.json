@@ -1,0 +1,11 @@
+{
+  "account": "YOUR_AWS_ACCOUNT_ID",
+  "region": "YOUR_AWS_REGION",
+  "instance": "YOUR_PRODUCTION_INSTANCE_ID",
+  "host_role": "YOUR_PRODUCTION_HOST_ROLE",
+  "bucket": "YOUR_PRIVATE_DEPLOYMENT_BUCKET",
+  "role": "YOUR_GITHUB_DEPLOYMENT_ROLE",
+  "document": "YOUR_FIXED_DEPLOYMENT_DOCUMENT",
+  "oidc_subject": "YOUR_REPOSITORY_MAIN_BRANCH_OIDC_SUBJECT",
+  "url": "https://www.electrajaringan.co.id"
+}
