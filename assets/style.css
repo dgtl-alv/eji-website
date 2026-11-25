@@ -151,3 +151,39 @@ td.price { font-weight: 700; white-space: nowrap; }
 .legal h2 { font-family: var(--font-ui); font-size: 20px; margin: 32px 0 8px; }
 .legal p, .legal li { color: var(--text-primary); font-size: 16px; line-height: 26px; font-weight: 300; }
 .legal .meta { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; }
+
+/* Locations: statistik, peta, tipe charger (mengikuti alvaauto.com/locations) */
+.section-head.center { text-align: center; margin-left: auto; margin-right: auto; max-width: 820px; }
+.kicker { font-size: clamp(18px, 2.4vw, 24px); font-weight: 500; margin: 0 0 12px; }
+.boost-head { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 16px 0 20px; }
+.boost-head img { width: 40px; height: 40px; }
+.boost-head span { font-size: clamp(22px, 3.4vw, 36px); font-weight: 700; letter-spacing: 0.5px; }
+.stat-cards { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); background: var(--bg-tertiary); padding: 12px; border-radius: var(--radius-lg); }
+.stat-card { background: #FFFFFF; border-radius: var(--radius-md); display: flex; align-items: baseline; justify-content: center; gap: 12px; padding: 20px 12px; }
+.stat-num { font-size: clamp(26px, 4vw, 44px); line-height: 1; font-weight: 700; color: #038563; }
+.stat-label { font-size: clamp(14px, 1.8vw, 22px); font-weight: 500; }
+.map-card { margin-top: 24px; background: var(--bg-dark); border-radius: var(--radius-xl); padding: 16px; display: grid; gap: 16px; }
+@media (min-width: 900px) { .map-card { grid-template-columns: 2.3fr 1fr; align-items: center; padding: 24px; } }
+.map-svg { width: 100%; height: auto; display: block; }
+.map-svg .land { fill: #4A4B4B; }
+.map-svg .land-other { fill: #2E302F; }
+.map-svg .dots circle { fill: var(--bg-brand); stroke: var(--bg-dark); stroke-width: 0.8; }
+.map-svg .labels text { fill: #FFFFFF; font-family: var(--font-ui); font-size: 15px; font-weight: 500; paint-order: stroke; stroke: var(--bg-dark); stroke-width: 4px; }
+.map-inset { background: #2A2C2B; border-radius: var(--radius-md); padding: 12px; }
+.map-inset .labels text { font-size: 14px; }
+.inset-title { color: var(--bg-brand); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.chargers { display: grid; gap: 24px; margin-top: 48px; }
+@media (min-width: 900px) { .chargers { grid-template-columns: repeat(2, 1fr); } }
+.charger { background: #E0E0E0; border-radius: var(--radius-xl); padding: 16px; display: flex; flex-direction: column; }
+.charger-inner { background: #FFFFFF; border-radius: var(--radius-lg); padding: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 260px; flex: 1; }
+.charger-logo { width: 100%; max-width: 230px; height: auto; }
+.charger-spec { display: flex; align-items: center; gap: 12px; margin-top: 16px; font-size: 16px; line-height: 20px; font-weight: 500; }
+.charger-spec .kw { font-size: 24px; font-weight: 700; white-space: nowrap; }
+.charger-img { height: 180px; width: auto; max-width: 130px; object-fit: contain; flex: none; }
+.charger-foot { padding: 16px 4px 4px; display: grid; gap: 8px; font-size: 14px; font-weight: 300; }
+.charger-foot b { font-weight: 500; }
+@media (max-width: 600px) {
+  .stat-cards { grid-template-columns: 1fr; }
+  .charger-inner { min-height: 0; padding: 16px; }
+  .charger-img { height: 120px; max-width: 90px; }
+}

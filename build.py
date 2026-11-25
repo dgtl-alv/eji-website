@@ -1,5 +1,7 @@
 """Generate EJI static site: English at root (default), Indonesian under /id/."""
 import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from locations import locations
 
 OUT = sys.argv[1]
 T = lambda s: f'<span class="todo">{s}</span>'
@@ -144,7 +146,7 @@ HOME = {
         <div class="card">
           <div class="icon"><img src="assets/ev-plug-charging.svg" alt=""></div>
           <h3>Charging stations</h3>
-          <p>1,037 charging connectors across the ALVA network (November 2026), ready for ALVA electric motorcycles.</p>
+          <p>483 locations and 1,037 charging connectors across the ALVA network (November 2026), ready for ALVA electric motorcycles.</p>
         </div>
         <div class="card">
           <div class="icon"><img src="assets/Money.svg" alt=""></div>
@@ -182,7 +184,7 @@ HOME = {
     </div>
   </section>
 
-  <section id="contact" class="contact">
+{locations("en")}  <section id="contact" class="alt contact">
     <div class="wrap">
       <div class="section-head">
         <h2>Contact</h2>
@@ -224,7 +226,7 @@ HOME = {
         <div class="card">
           <div class="icon"><img src="../assets/ev-plug-charging.svg" alt=""></div>
           <h3>Stasiun pengisian daya</h3>
-          <p>1.037 konektor pengisian daya di jaringan ALVA (November 2026), siap dipakai motor listrik ALVA.</p>
+          <p>483 lokasi dan 1.037 konektor pengisian daya di jaringan ALVA (November 2026), siap dipakai motor listrik ALVA.</p>
         </div>
         <div class="card">
           <div class="icon"><img src="../assets/Money.svg" alt=""></div>
@@ -262,7 +264,7 @@ HOME = {
     </div>
   </section>
 
-  <section id="kontak" class="contact">
+{locations("id")}  <section id="kontak" class="alt contact">
     <div class="wrap">
       <div class="section-head">
         <h2>Kontak</h2>
