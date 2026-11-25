@@ -1,0 +1,126 @@
+/* Token dari ALVA Design System v2 (dgtl-alv/alva-design-system, DESIGN.md) */
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;700&display=swap");
+
+:root {
+  --text-primary: #1F2120;
+  --text-secondary: #6B6C6C;
+  --text-inverse: #FFFFFF;
+  --text-brand-secondary: #09765A;
+  --text-info: #435CCE;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F3F3F3;
+  --bg-tertiary: #EDEDED;
+  --bg-brand: #33FFC9;
+  --bg-brand-tertiary: #ADFFE9;
+  --bg-dark: #1F2120;
+  --bg-success-subtle: #EBFFFA;
+  --bg-warning: #FFEFB6;
+  --ink-warning: #79641D;
+  --border-primary: #898A8D;
+  --border-subtle: #DBDBDB;
+  --border-focus: #06C08F;
+  --btn-primary: #016248;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 999px;
+  --shadow-100: 0 1px 3px rgb(31 33 32 / 8%), 0 1px 2px rgb(31 33 32 / 6%);
+  --font-ui: "Made Outer Sans", "Readex Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-read: "Readex Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wrap: 1120px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; color-scheme: light; }
+body { margin: 0; background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-ui); font-size: 16px; line-height: 22px; font-weight: 400; }
+img { max-width: 100%; display: block; }
+a { color: var(--text-info); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--border-focus); outline-offset: 2px; box-shadow: 0 0 0 5px var(--text-primary); }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+@media (min-width: 768px) { .wrap { padding: 0 32px; } }
+
+/* Draft marker: isian yang wajib dikonfirmasi sebelum tayang */
+.todo { background: var(--bg-warning); color: var(--ink-warning); border-radius: var(--radius-sm); padding: 0 4px; font-weight: 500; }
+.draft-banner { background: var(--bg-warning); color: var(--ink-warning); font-size: 14px; line-height: 20px; text-align: center; padding: 8px 16px; font-weight: 500; }
+
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 10; background: var(--bg-dark); color: var(--text-inverse); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text-inverse); text-decoration: none; font-weight: 700; font-size: 16px; letter-spacing: 0.5px; }
+.brand img { width: 32px; height: 32px; }
+.brand small { display: block; font-weight: 300; font-size: 12px; line-height: 14px; color: #B6B7B7; letter-spacing: 0; }
+.nav { display: none; gap: 24px; }
+.nav a { color: var(--text-inverse); text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav a:hover { color: var(--bg-brand); }
+@media (min-width: 900px) { .nav { display: flex; } }
+
+/* Buttons (pill, per Button page) */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 24px; border-radius: var(--radius-full); font-family: var(--font-ui); font-size: 14px; font-weight: 700; line-height: 16px; text-decoration: none; border: 1px solid transparent; }
+.btn-app { background: var(--bg-brand); color: var(--text-primary); }
+.btn-app:hover { background: #85FFDE; }
+.btn-primary { background: var(--btn-primary); color: var(--text-inverse); }
+.btn-ghost { background: transparent; color: var(--text-inverse); border-color: var(--text-inverse); }
+
+/* Hero */
+.hero { background: var(--bg-dark); color: var(--text-inverse); padding: 64px 0 80px; }
+.eyebrow { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--bg-brand); margin-bottom: 16px; }
+.hero h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.25; font-weight: 700; letter-spacing: 0.5px; margin: 0 0 16px; max-width: 760px; }
+.hero p { font-size: 16px; line-height: 24px; font-weight: 300; color: #DBDBDB; max-width: 620px; margin: 0 0 32px; }
+.hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Sections */
+section { padding: 64px 0; }
+section.alt { background: var(--bg-secondary); }
+.section-head { max-width: 680px; margin-bottom: 32px; }
+h2 { font-size: clamp(24px, 4vw, 32px); line-height: 1.3; font-weight: 700; letter-spacing: 0.5px; margin: 0 0 12px; }
+h3 { font-size: 18px; line-height: 24px; font-weight: 700; margin: 0 0 8px; }
+.lead { color: var(--text-secondary); font-weight: 300; margin: 0; }
+
+.grid { display: grid; gap: 16px; }
+@media (min-width: 768px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: repeat(3, 1fr); } .grid-4 { grid-template-columns: repeat(4, 1fr); } }
+
+.card { background: var(--bg-primary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-100); }
+.card p { color: var(--text-secondary); margin: 0; font-size: 14px; line-height: 20px; }
+.icon { width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--bg-brand-tertiary); display: grid; place-items: center; margin-bottom: 16px; }
+.icon img { width: 24px; height: 24px; }
+.step-no { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: var(--radius-full); background: var(--bg-dark); color: var(--bg-brand); font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+
+/* Price table (DataTable spec) */
+.table-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); background: var(--bg-primary); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 20px; }
+@media (max-width: 600px) { th, td { padding: 12px 10px; } td.price { white-space: normal; } }
+th { background: var(--bg-secondary); text-align: left; font-weight: 700; padding: 12px 16px; }
+td { padding: 14px 16px; border-top: 1px solid var(--border-subtle); vertical-align: top; }
+td.price { font-weight: 700; white-space: nowrap; }
+.note { font-size: 12px; line-height: 18px; color: var(--text-secondary); margin-top: 12px; }
+
+/* Payment chips (Tag spec) */
+.pay-list { display: flex; flex-wrap: wrap; gap: 12px; }
+.pay { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: var(--radius-full); background: var(--bg-primary); border: 1px solid var(--border-primary); font-size: 14px; font-weight: 700; }
+.pay::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--text-brand-secondary); }
+
+.inline-message { background: var(--bg-success-subtle); color: var(--text-brand-secondary); border-radius: var(--radius-md); padding: 16px; font-size: 14px; line-height: 20px; font-weight: 500; margin-top: 24px; }
+
+/* Contact */
+.contact dl { margin: 0; display: grid; gap: 16px; }
+.contact dt { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); font-weight: 500; }
+.contact dd { margin: 4px 0 0; font-weight: 500; }
+
+/* Footer */
+.site-footer { background: var(--bg-dark); color: #DBDBDB; padding: 48px 0 32px; font-size: 14px; line-height: 20px; }
+.site-footer a { color: var(--text-inverse); text-decoration: none; }
+.site-footer a:hover { color: var(--bg-brand); }
+.footer-grid { display: grid; gap: 32px; }
+@media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+.footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.footer-title { color: var(--text-inverse); font-weight: 700; margin-bottom: 12px; }
+.copyright { border-top: 1px solid #4A4B4B; margin-top: 32px; padding-top: 16px; font-size: 12px; color: #9E9F9F; }
+
+/* Legal pages: Readex Pro untuk teks panjang (aturan DS) */
+.legal { padding: 48px 0 64px; }
+.legal .doc { max-width: 760px; font-family: var(--font-read); }
+.legal h1 { font-family: var(--font-ui); font-size: clamp(28px, 5vw, 40px); line-height: 1.25; margin: 0 0 8px; }
+.legal h2 { font-family: var(--font-ui); font-size: 20px; margin: 32px 0 8px; }
+.legal p, .legal li { color: var(--text-primary); font-size: 16px; line-height: 26px; }
+.legal .meta { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; }
