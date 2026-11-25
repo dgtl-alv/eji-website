@@ -1,5 +1,7 @@
 /* Token dari ALVA Design System v2 (dgtl-alv/alva-design-system, DESIGN.md) */
-@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;700&display=swap");
+@font-face { font-family: "MADE Outer Sans"; src: url("fonts/made_outer_sans_light.otf") format("opentype"); font-weight: 300; font-display: swap; }
+@font-face { font-family: "MADE Outer Sans"; src: url("fonts/made_outer_sans_regular.otf") format("opentype"); font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "MADE Outer Sans"; src: url("fonts/made_outer_sans_bold.otf") format("opentype"); font-weight: 600 800; font-display: swap; }
 
 :root {
   --text-primary: #1F2120;
@@ -26,8 +28,8 @@
   --radius-xl: 16px;
   --radius-full: 999px;
   --shadow-100: 0 1px 3px rgb(31 33 32 / 8%), 0 1px 2px rgb(31 33 32 / 6%);
-  --font-ui: "Made Outer Sans", "Readex Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-read: "Readex Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-ui: "MADE Outer Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-read: "MADE Outer Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --wrap: 1120px;
 }
 
@@ -53,6 +55,12 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--border-focus); 
 .nav { display: none; gap: 24px; }
 .nav a { color: var(--text-inverse); text-decoration: none; font-size: 14px; font-weight: 500; }
 .nav a:hover { color: var(--bg-brand); }
+.header-right { display: flex; align-items: center; gap: 24px; }
+.lang { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; }
+.lang a { color: #9E9F9F; text-decoration: none; padding: 4px 2px; }
+.lang a[aria-current="true"] { color: var(--text-inverse); font-weight: 700; }
+.lang a:hover { color: var(--bg-brand); }
+.lang span { color: #4A4B4B; }
 @media (min-width: 900px) { .nav { display: flex; } }
 
 /* Buttons (pill, per Button page) */
@@ -122,5 +130,5 @@ td.price { font-weight: 700; white-space: nowrap; }
 .legal .doc { max-width: 760px; font-family: var(--font-read); }
 .legal h1 { font-family: var(--font-ui); font-size: clamp(28px, 5vw, 40px); line-height: 1.25; margin: 0 0 8px; }
 .legal h2 { font-family: var(--font-ui); font-size: 20px; margin: 32px 0 8px; }
-.legal p, .legal li { color: var(--text-primary); font-size: 16px; line-height: 26px; }
+.legal p, .legal li { color: var(--text-primary); font-size: 16px; line-height: 26px; font-weight: 300; }
 .legal .meta { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; }
